@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "JreMG4mpioQ=",
+  "success": true,
+  "projectFilePath": "C:\\CodeProjects\\harderdiscord\\vendor\\src\\BP.IO.CMD.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\njrau\\.nuget\\packages\\buttplug\\4.0.0\\buttplug.4.0.0.nupkg.sha512",
+    "C:\\Users\\njrau\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\njrau\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

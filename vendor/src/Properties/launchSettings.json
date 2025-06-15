@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "BP.IO.CMD": {
+      "commandName": "Project",
+      "commandLineArgs": "30 40"
+    },
+    "Profile 1": {
+      "commandName": "Executable"
+    },
+    "Profile 2": {
+      "commandName": "Project",
+      "commandLineArgs": "stop"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+services:
+  botcontainer:
+    build:
+      context: backend
+      dockerfile: ../Dockerfile
+    volumes:
+      #- ../..:/workspaces:cached
+      - ./app /opt/app/src
+    #network_mode: service:db
+    command: sleep infinity
+
+#   db:
+#     image: postgres:latest
+#     restart: unless-stopped
+#     volumes:
+#       - postgres-data:/var/lib/postgresql/data
+#     environment:
+#       POSTGRES_PASSWORD: postgres
+#       POSTGRES_USER: postgres
+#       POSTGRES_DB: postgres
+
+# volumes:
+#   postgres-data:

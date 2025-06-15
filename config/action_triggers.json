@@ -1,0 +1,9 @@
+{
+    "good girl": "_turnon=2 _at=40 _for=8",
+    "bad girl": "_turnon=1 _at=10 _for=1",
+    "cum": "_turnon=1 _at=100 _for=15",
+    "squirm": "_turnon=1 _at=30 _for=25",
+    
+    "good bot": "_turnon=1 _at=10 _for=1 _message=1",    
+    "bad bot": "_turnon=1 _at=10 _for=1 _message=2"
+}
