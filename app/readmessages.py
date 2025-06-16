@@ -1,23 +1,15 @@
 import discord
 import json
 import os
-#import vibetoys
-#import asyncio
 import subprocess
 import random
-#import vibe_prom_toys as vp
 import winsdk.windows.devices.bluetooth.advertisement as wwda
 import winsdk.windows.storage.streams as wwss
-import asyncio
 import time
-import threading
-import asyncio
-import logging
-import sys
 import json
 import asyncio
 import websockets
-#from dotenv import load_dotenv
+
 
 buttplug_server_is_running = False
 def test_url(url, data=""):
@@ -57,8 +49,6 @@ def get_rand_emoji():
     return random.choice(emoji_list)
 
 def get_triggers():
-    import json
-
     data = {}
     
     with open(rootpath + '\\..\\config\\action_triggers.json', 'r') as file:
@@ -75,7 +65,7 @@ async def to_act_or_not_to_act(message, triggers):
             device_index = action_params[0].split("=")[1]
             strength = action_params[1].split("=")[1]
             duration = action_params[2].split("=")[1]
-            channel = client.get_channel(int(1383417107764613211)) # find the channel with the channel ID
+            channel = client.get_channel(int(DISCORD_CHANNEL))
             
             if( len(action_params) > 3 ):
                 bot_response = action_params[3].split("=")[1]
@@ -94,9 +84,6 @@ async def to_act_or_not_to_act(message, triggers):
             prom_str = int((int(strength)/100)*3)
             print("have prom str ", prom_str)
             
-            #import os
-            #os.system(fullpath_helper + " " + strength + " " + duration)
-            #os.spawnl(os.P_DETACH, fullpath_helper, strength, duration)
             await SHAKE(prom_str, int(duration))
 
             print("have action params as ", action_params)
@@ -109,10 +96,6 @@ async def to_act_or_not_to_act(message, triggers):
                 time.sleep(int(duration))
             
             await STOP()
-            #t1.start()
-            #t2.start()
-
-            #await client.send_message(client.get_channel("1383417107764613211"), 'hello world!')
             
 
 advt_pub = None
@@ -130,11 +113,8 @@ async def send_command(command,duration):
     manufacturerData.data =  writer.detach_buffer()
     advt_publish.advertisement.manufacturer_data.append(manufacturerData)
     advt_publish.start()
-    #time.sleep(duration)
     print("have advt pub stat as ", str(advt_publish.status))
-    #while(str(advt_publish.status) != "2"):
-    #    pass
-    #advt_publish.stop()
+    
 
 
 async def STOP():
@@ -174,7 +154,7 @@ print("Bot started")
 @client.event
 async def on_message(message):
     
-    channelIDsToListen = [ 1383417107764613211 ] # put the channels that you want to listen to here
+    channelIDsToListen = [ int(DISCORD_CHANNEL) ]
     print("have message " + str(message.content) + " on channel " + str(message.channel.id))
     
     if message.channel.id in channelIDsToListen:
@@ -194,5 +174,6 @@ def get_env_data_as_dict(path: str) -> dict:
 vars_dict = get_env_data_as_dict(rootpath + "\\.env")
 os.environ.update(vars_dict)
 DOTNET_SECRET = os.getenv('DISCORD_SECRET')
+DISCORD_CHANNEL = os.getenv('DISCORD_CHANNEL')
 print("have dotnet secret as ", DOTNET_SECRET)
 client.run(DOTNET_SECRET)
