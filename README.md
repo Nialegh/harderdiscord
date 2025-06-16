@@ -22,6 +22,9 @@
       - The discord auth key is retrieved from discord dev portal, where a corresponding new application space is being configured for this same bot. My key is not in the repo for security purposes
       - To get a new Discord bot api key :: Log into Discord Dev Portal, navigate to New Program and follow the steps, navigate to New Bot and follow the steps, 
                                                    navigate to the Build-A-Bot widget and there you can retrieve or reset your bot api key.
+  - Configure the discord channel in the same app/.env file as a new line: DISCORD_CHANNEL=<ID_VALUE>
+      - The ID can be retrieved from a running instance of this same bot, which will print the id of the channel of new messages for debugging. Send a test message, and inspect the output to see what channel the message is on
+  
   - 
   - Run with python app/readmessages.py
   - Test by sending keywords to the linked Discord channel and confirming that the bot and haptic feedback devices react -- 
